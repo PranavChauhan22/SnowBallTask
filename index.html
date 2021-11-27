@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    .html {
+      scroll-behavior: smooth;
+    }
+    .flxhori {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .rank {
+      background-color: rgb(0, 166, 255);
+      border-radius: 5px;
+      margin: 10px;
+      height: 50px;
+      width: 30px;
+      padding: 10px;
+      font-size: 20px;
+    }
+    .ldr1 {
+      margin: 20px;
+      font-size: 20px;
+    }
+    .score {
+      margin: 20px;
+      font-size: 20px;
+    }
+    .scrtag {
+      margin: 20px;
+      padding: 10px;
+      font-size: 10px;
+      background-color: rgb(0, 255, 0);
+      border-radius: 5px;
+    }
+    .body {
+      /* overflow: hidden; */
+    }
+    .ldrboard {
+      margin: auto;
+    }
+    #myBtn{
+      width: 120px;
+      background-color: rgb(0, 166, 255);
+      color: white;
+      border: transparent;
+      border-radius: 10px;
+      margin: 20px;
+      padding: 5px;
+
+    }
+    #myBtn:hover{
+      background-color: white;
+      color: rgb(0, 166, 255);
+      border: 2px solid rgb(0, 166, 255);
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+    }
+    #quesname {
+      font-family: 'Fjalla One', sans-serif;
+      /* font-weight: bolder; */
+      font-size: 20px;
+    }
+
+    .form-quiz {
+      width: 40vw;
+      margin: auto;
+      margin-top: 100px;
+    }
+
+    .radiobtns {
+      display: flex;
+      flex-direction: column;
+    }
+    .radiobt {
+      margin: 20px;
+    }
+
+    .quesaft {
+      margin: 20px;
+    }
+    .tmlft {
+      width: 200px;
+      text-align: left;
+    }
+    .optfont {
+      font-family: 'Fjalla One', sans-serif;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    .sbt {
+      width: 200px;
+      margin: 20px;
+    }
+    #frmlogin {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 30vh;
+      left: 20vw;
+    }
+    .Login {
+      color: rgb(0, 136, 255);
+      margin: 30px;
+    }
+    .frmmain {
+      display: flex;
+      flex-direction: column;
+    }
+    .namelogin {
+      margin: 30px;
+      width: 200px;
+      border-radius: 20px;
+      border: 2px solid rgb(0, 136, 255);
+      padding: 10px;
+      transition: width 2s;
+    }
+    .namelogin:hover {
+      width: 250px;
+    }
+    .sbtlogin {
+      width: 100px;
+      margin: 30px;
+      background-color: rgb(0, 255, 208);
+      border-radius: 30px;
+      border: 2px solid rgb(0, 136, 255);
+    }
+    .sbtlogin:hover {
+      background-color: white;
+      color: rgb(0, 136, 255);
+    }
+    .lognimg {
+      background-image: url('./Account-amico.png');
+      width: 45vw;
+      height: 80vh;
+      background-size: cover;
+      position: absolute;
+      margin: 30px;
+      right: 0;
+
+      /* top: 0; */
+    }
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0); /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="lognimg" id="logimg"></div>
+    <div id="frmlogin">
+      <h1 class="Login">Login</h1>
+      <form class="frmmain">
+        <input
+          type="text"
+          name="loginname"
+          placeholder="Your Name"
+          class="namelogin"
+          id="lgnname"
+        />
+        <button type="submit" class="sbtlogin" onclick="capnameoflogin()">
+          Play
+        </button>
+      </form>
+      <button id="myBtn">Leaderboard</button>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+
+          <h1 class="ldrboard">
+            🎖
+            <i>Leaderboard</i>
+            🎖
+          </h1>
+
+          <div class="flxhori">
+            <div class="rank">1</div>
+            <div class="ldr1" id="ldr1">Not Played...</div>
+            <div class="score" id="score1">0</div>
+            <div class="scrtag">Points</div>
+          </div>
+          <div class="flxhori">
+            <div class="rank">2</div>
+            <div class="ldr2" id="ldr2">Not Played...</div>
+            <div class="score" id="score2">0</div>
+            <div class="scrtag">Points</div>
+          </div>
+          <div class="flxhori">
+            <div class="rank">3</div>
+            <div class="ldr3" id="ldr3">Not Played...</div>
+            <div class="score" id="score3">0</div>
+            <div class="scrtag">Points</div>
+          </div>
+          <div class="flxhori">
+            <div class="rank">4</div>
+            <div class="ldr4" id="ldr4">Not Played...</div>
+            <div class="score" id="score4">0</div>
+            <div class="scrtag">Points</div>
+          </div>
+          <div class="flxhori">
+            <div class="rank">5</div>
+            <div class="ldr5" id="ldr5">Not Played...</div>
+            <div class="score" id="score5">0</div>
+            <div class="scrtag">Points</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="quizmain">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Quizzer</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="form-quiz">
+        <form class="form">
+          <div class="quizque">
+            <span class="badge bg-info text-dark" class="questag">
+              Question
+            </span>
+            <span class="quesaft" id="quesname">Loading...</span>
+            <div class="radiobtns">
+              <div class="opt">
+                <span class="badge rounded-pill bg-success" class="optaft">
+                  Option1
+                </span>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="john"
+                  class="radiobt"
+                  id="option1"
+                />
+                <span id="opt1" class="optfont"></span>
+              </div>
+              <div class="opt">
+                <span class="badge rounded-pill bg-success" class="optaft">
+                  Option2
+                </span>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="james"
+                  class="radiobt"
+                  id="option2"
+                />
+                <span id="opt2" class="optfont"></span>
+              </div>
+
+              <div class="opt">
+                <span class="badge rounded-pill bg-success" class="optaft">
+                  Option3
+                </span>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="harry"
+                  class="radiobt"
+                  id="option3"
+                />
+                <span id="opt3" class="optfont"></span>
+              </div>
+              <div class="opt">
+                <span class="badge rounded-pill bg-success" class="optaft">
+                  Option4
+                </span>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="kart"
+                  class="radiobt"
+                  id="option4"
+                />
+                <span id="opt4" class="optfont"></span>
+              </div>
+              <div class="tmsub">
+                <button
+                  type="button"
+                  class="btn btn-outline-dark tmlft"
+                  onclick="submithandler1()"
+                >
+                  Time left :
+                  <span id="timer"></span>
+                  Seconds
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-danger sbt"
+                  onclick="submithandler1()"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>
+    var cnt = 1
+    var score = 0
+    var name
+    var qn = 0
+
+    document.getElementById('quizmain').style.visibility = 'hidden'
+
+    const ansarr = ['', '6', 'Howard Stark', 'Delhi', 'Tony Stark']
+    const ques = [
+      '',
+      "How many Infinity Stones are there?",
+      "Who is Tony Stark’s father?",
+      "What's the Capital of India?",
+      'Who is Iron Man?',
+    ]
+    const options = [
+      ['', '', '', ''],
+      ['1', '2', '3', '6'],
+      ['John Stark', 'Howard Stark', 'Kart Stark', 'Jack Stark'],
+      ['Delhi', 'Punjab', 'Gujarat', 'Harayana'],
+      ['Tony Stark', 'Chris Evans', 'Tom Holland', 'Willingston'],
+    ]
+    function sortFunction(a, b) {
+      if (a[0] === b[0]) {
+        return 0
+      } else {
+        return a[0] > b[0] ? -1 : 1
+      }
+    }
+    function checkcount() {
+      if (cnt == 1) {
+        clearcount()
+        changeques()
+      }
+    }
+    function clearcount() {
+      cnt = 30
+    }
+    function changeques() {
+      qn = qn + 1
+
+      document.getElementById('quesname').innerHTML = ques[qn]
+      console.log(document.getElementById('option1'))
+      document.getElementById('option1').value = options[qn][0]
+      document.getElementById('option2').value = options[qn][1]
+      document.getElementById('option3').value = options[qn][2]
+      document.getElementById('option4').value = options[qn][3]
+      document.getElementById('opt1').innerHTML = options[qn][0]
+      document.getElementById('opt2').innerHTML = options[qn][1]
+      document.getElementById('opt3').innerHTML = options[qn][2]
+      document.getElementById('opt4').innerHTML = options[qn][3]
+    }
+    function submithandler1() {
+      console.log(score)
+
+      event.preventDefault()
+      var ele = document.getElementsByName('gender')
+
+      for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked) {
+          if (ele[i].value == ansarr[qn]) {
+            score += cnt
+          } else {
+            score -= 5
+          }
+        }
+      }
+      if (qn == 4) {
+        localStorage.setItem(name, score)
+        document.getElementById('quizmain').style.visibility = 'hidden'
+        document.getElementById('frmlogin').style.visibility = 'visible'
+        document.getElementById('logimg').style.visibility = 'visible'
+        var values = [],
+          keys = Object.keys(localStorage),
+          i = keys.length
+
+        while (i--) {
+          values.push([localStorage.getItem(keys[i]), keys[i]])
+        }
+        values.sort(sortFunction)
+        if (values.length > 5) {
+          values = values.slice(0, 5)
+        }
+        
+        console.log(values);
+        for (var i = 1; i <= values.length; i++) {
+          console.log('ldr' + i)
+          console.log(values[i][0])
+          document.getElementById('ldr' + i).innerHTML = values[i][1]
+          document.getElementById('score' + i).innerHTML = values[i][0]
+        }
+    
+      }
+
+      changeques()
+      clearcount()
+      myTimer()
+    }
+
+    var myVar = setInterval(myTimer, 1000)
+
+    function myTimer() {
+      checkcount()
+
+      document.getElementById('timer').innerHTML = cnt
+      cnt = cnt - 1
+    }
+    function capnameoflogin() {
+      event.preventDefault()
+      var loginname = document.getElementById('lgnname').value
+
+      name = loginname
+      document.getElementById('quizmain').style.visibility = 'visible'
+      document.getElementById('frmlogin').style.visibility = 'hidden'
+      document.getElementById('logimg').style.visibility = 'hidden'
+    }
+    var modal = document.getElementById('myModal')
+
+    // Get the button that opens the modal
+    var btn = document.getElementById('myBtn')
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName('close')[0]
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
+      modal.style.display = 'block'
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = 'none'
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = 'none'
+      }
+    }
+  </script>
+</html>
